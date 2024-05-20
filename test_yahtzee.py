@@ -1,27 +1,46 @@
-from yahtzee import YahtzeeMainClass
-from die import Die
-
 import pytest
+from yahtzee import YahtzeeGame, Dice
 
+"""
 
-def test_is_yahtzee_when_all_dice_matches():
-    dice = [Die(), Die(), Die(), Die(), Die()]
+IMPORTANT! Run pytest with '-s' flag to avoid stdin/output errors
+
+"""
+
+def test_is_yahtzee():
+    dice = [Dice() for _ in range(5)]
     
     for die in dice:
         die.value = 6
     
-    # Assert something?
+    yahtzee_game = YahtzeeGame()
+    yahtzee_game.dice_collection = dice
+    
+    assert yahtzee_game.is_yahtzee() is True
 
 
-def test_is_not_yahtzee_when_all_dice_not_matching_each_other():
-    dice = [Die(), Die(), Die(), Die(), Die()]
+def test_not_yahtzee():
+    dice = [Dice() for _ in range(5)]
     
     for die in dice:
         die.value = 6
-        
+    
     dice[0].value = 2
     
-    # Assert something?
+    yahtzee_game = YahtzeeGame()
+    yahtzee_game.dice_collection = dice
+    
+    assert yahtzee_game.is_yahtzee() is False
+
+
+def test_roll_is_unique():
+    yahtzee_game = YahtzeeGame()
+    initial_values = [die.value for die in yahtzee_game.dice_collection]
+    
+    yahtzee_game.roll_dice()
+    new_values = [die.value for die in yahtzee_game.dice_collection]
+    
+    assert initial_values != new_values
 
 
 if __name__ == '__main__':
