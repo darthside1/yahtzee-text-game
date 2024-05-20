@@ -1,10 +1,17 @@
-# Written by
-
-Patryk Robakowski
+`Written by`
+```
+    Patryk Robakowski - Student at Movant Yh Malmö
+```
+`Submitted to`
+```
+    Jimmy Berlin - Natrolit
+```
 
 # Yahtzee Game
 
+First assignment as part of the class 'Programmering Inbyggda System'.
 A simple implementation of the classic Yahtzee game in Python.
+
 
 ## Files
 
